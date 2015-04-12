@@ -41,17 +41,16 @@ public class DsProg2 {
 
             String word = match.group().toLowerCase();
 
-            if (ignore.contains(word)) {
+            if (ignore.contains(word.toLowerCase())) {
                 continue;
             }
-
-            if(words.containsKey(word)){
-                
-                Integer currentCount = words.get(word);
-                words.put(word, ++currentCount);
+            
+            Integer currentCount = words.get(word);   
+            if(currentCount == null){                
+                words.put(word, 1);
             }
             else{
-                words.put(word, 1);
+                words.put(word, ++currentCount);
             } 
             
             System.out.println(word);
@@ -72,6 +71,8 @@ public class DsProg2 {
          * ADD CODE Iterate through words and store the Map entry pairs into
          * your array/list structure of WordFrequency (or Map.Entry) objects.
          */
+        
+        
         /**
          * ADD CODE Create a comparator for WordFrequency (or Map.Entry) objects
          * which compares by count. Then sort your array/list using this
